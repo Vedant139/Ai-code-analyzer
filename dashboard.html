@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Intervoxa interview preparation tracker with dynamic DOM task management." />
+    <title>Preparation Tracker | Intervoxa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="background-orb orb-one"></div>
+    <div class="background-orb orb-two"></div>
+
+    <header class="site-header" aria-label="Main navigation">
+      <a class="brand" href="index.html" aria-label="Intervoxa home">
+        <span class="brand-mark">AI</span>
+        <span>Intervoxa</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primaryNavigation">
+        <span class="sr-only">Toggle navigation</span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="nav-links" id="primaryNavigation" aria-label="Page navigation">
+        <a href="index.html">Home</a>
+        <a href="dashboard.html" aria-current="page">Preparation Tracker</a>
+        <a href="practice.html">Practice</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <p class="eyebrow">Dynamic Dashboard</p>
+        <h1>Interview Preparation Tracker</h1>
+        <p>
+          Add, complete, and delete preparation tasks while monitoring your total, completed, and pending progress in real time.
+        </p>
+      </section>
+
+      <section class="dashboard-grid" aria-label="Progress counters">
+        <article class="dashboard-card">
+          <span>Total Tasks</span>
+          <strong id="totalTasks">0</strong>
+        </article>
+        <article class="dashboard-card completed-card">
+          <span>Completed</span>
+          <strong id="completedTasks">0</strong>
+        </article>
+        <article class="dashboard-card pending-card">
+          <span>Pending</span>
+          <strong id="pendingTasks">0</strong>
+        </article>
+      </section>
+
+      <section class="task-manager-card" aria-label="Interview task manager">
+        <div class="task-manager-header">
+          <div>
+            <p class="eyebrow">Preparation Tasks</p>
+            <h2>Plan your next practice session</h2>
+          </div>
+          <span class="status-pill" id="progressLabel">0% complete</span>
+        </div>
+
+        <form class="task-form" id="taskForm">
+          <label class="sr-only" for="taskInput">Add preparation task</label>
+          <input id="taskInput" type="text" placeholder="Example: Practice Java Interview" autocomplete="off" />
+          <button class="primary-button" type="submit">Add Task</button>
+        </form>
+
+        <div class="task-toolbar">
+          <div class="task-filters">
+            <button class="filter-btn active" data-task-filter="all" type="button">All</button>
+            <button class="filter-btn" data-task-filter="pending" type="button">Pending</button>
+            <button class="filter-btn" data-task-filter="completed" type="button">Completed</button>
+          </div>
+          <button class="secondary-button compact-btn" id="clearCompletedButton" type="button">Clear Completed</button>
+        </div>
+
+        <div class="progress-track" aria-hidden="true">
+          <span id="progressBar"></span>
+        </div>
+
+        <ul class="task-list" id="taskList" aria-live="polite"></ul>
+      </section>
+
+      <section class="analytics-panel" aria-label="Voice interview analytics">
+        <div class="task-manager-header">
+          <div>
+            <p class="eyebrow">AI Coach Dashboard</p>
+            <h2>Interview history and progress analytics</h2>
+          </div>
+          <div class="analytics-actions">
+            <button class="secondary-button compact-btn" id="clearHistoryButton" type="button">Clear History</button>
+            <a class="secondary-button" href="practice.html">Start Voice Interview</a>
+          </div>
+        </div>
+        <div class="dashboard-grid analytics-grid">
+          <article class="dashboard-card">
+            <span>Voice Interviews</span>
+            <strong id="interviewCount">0</strong>
+          </article>
+          <article class="dashboard-card completed-card">
+            <span>Average Score</span>
+            <strong id="averageScore">0%</strong>
+          </article>
+          <article class="dashboard-card pending-card">
+            <span>Skill Gap Analysis</span>
+            <ul class="skill-gap-list" id="skillGapList"></ul>
+          </article>
+        </div>
+        <div class="history-table-wrap">
+          <table class="history-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Domain</th>
+                <th>Language</th>
+                <th>Score</th>
+                <th>Focus Topic</th>
+              </tr>
+            </thead>
+            <tbody id="historyTable">
+              <tr><td colspan="5">No interview history yet.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="quiz-shell" id="quizModule" aria-label="Interactive interview quiz">
+        <div class="task-manager-header">
+          <div>
+            <p class="eyebrow">Interactive Quiz</p>
+            <h2>Practice one interview question at a time</h2>
+          </div>
+          <span class="status-pill timer-pill">⏱ <span id="quizTimer">00:00</span></span>
+        </div>
+
+        <div class="quiz-setup" id="quizSetup">
+          <div class="form-grid">
+            <div class="form-field">
+              <label for="quizCategory">Select Category</label>
+              <select id="quizCategory"></select>
+            </div>
+            <div class="form-field">
+              <label for="quizDifficulty">Difficulty Level</label>
+              <select id="quizDifficulty">
+                <option value="Easy">Easy</option>
+                <option value="Medium">Medium</option>
+                <option value="Hard">Hard</option>
+              </select>
+            </div>
+          </div>
+          <button class="primary-button" id="startQuizButton" type="button">Start Quiz</button>
+        </div>
+
+        <div class="quiz-panel is-hidden" id="quizPanel">
+          <div class="quiz-meta">
+            <span id="questionCounter">Question 1 of 5</span>
+            <span id="questionCategory">Java</span>
+            <span id="questionDifficulty">Easy</span>
+          </div>
+          <div class="progress-track" aria-hidden="true">
+            <span id="quizProgress"></span>
+          </div>
+          <article class="question-box quiz-question-card">
+            <p class="box-label">Question</p>
+            <h3 id="questionText">Question text will appear here.</h3>
+          </article>
+          <div class="answer-list" id="answerList" aria-label="Answer options"></div>
+          <div class="quiz-actions">
+            <button class="secondary-button" id="previousQuestionButton" type="button">Previous</button>
+            <button class="primary-button" id="nextQuestionButton" type="button">Next Question</button>
+          </div>
+        </div>
+
+        <div class="result-panel is-hidden" id="resultPanel">
+          <p class="eyebrow">Result Screen</p>
+          <h2>Your quiz performance</h2>
+          <div class="result-grid">
+            <article><span>Total Questions</span><strong id="totalQuestionsResult">0</strong></article>
+            <article><span>Correct Answers</span><strong id="correctAnswersResult">0</strong></article>
+            <article><span>Wrong Answers</span><strong id="wrongAnswersResult">0</strong></article>
+            <article><span>Percentage</span><strong id="percentageResult">0%</strong></article>
+          </div>
+          <p class="performance-level" id="performanceResult">Performance level appears here.</p>
+          <button class="primary-button" id="restartQuizButton" type="button">Try Another Quiz</button>
+        </div>
+
+        <p class="api-status" id="quizStatus" role="status" aria-live="polite">Choose a category and difficulty to begin.</p>
+      </section>
+
+      <section class="api-demo-grid" aria-label="API integration demos">
+        <article class="api-card">
+          <p class="eyebrow">Joke API Demo</p>
+          <h2>Warm up before the interview</h2>
+          <p id="jokeText">Click the button to fetch a random joke from an external API.</p>
+          <button class="secondary-button" id="jokeButton" type="button">Fetch Random Joke</button>
+          <small class="api-status" id="jokeStatus" aria-live="polite"></small>
+        </article>
+
+        <article class="api-card">
+          <p class="eyebrow">Question API Module</p>
+          <h2>Service-rendered sample questions</h2>
+          <ul class="api-question-list" id="apiQuestionList"></ul>
+          <button class="secondary-button" id="apiRetryButton" type="button">Retry Questions</button>
+          <small class="api-status" id="apiQuestionStatus" aria-live="polite"></small>
+        </article>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <p>© 2026 Intervoxa. Built as an AI Mock Interview internship project.</p>
+      <div>
+        <a href="index.html">Home</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </footer>
+
+    <script src="js/navigation.js" defer></script>
+    <script src="js/taskManager.js" defer></script>
+    <script type="module" src="js/quiz.js"></script>
+    <script type="module" src="js/api.js"></script>
+    <script type="module" src="js/dashboardAnalytics.js"></script>
+  </body>
+</html>

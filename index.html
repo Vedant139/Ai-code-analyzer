@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Intervoxa is an AI mock interview platform with responsive UI, preparation tracking, API-powered quiz demos, and interview practice foundations." />
+    <title>Intervoxa | AI Mock Interview Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="background-orb orb-one"></div>
+    <div class="background-orb orb-two"></div>
+
+    <header class="site-header" aria-label="Main navigation">
+      <a class="brand" href="index.html" aria-label="Intervoxa home">
+        <span class="brand-mark">AI</span>
+        <span>Intervoxa</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primaryNavigation">
+        <span class="sr-only">Toggle navigation</span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="nav-links" id="primaryNavigation" aria-label="Page navigation">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="dashboard.html">Preparation Tracker</a>
+        <a href="practice.html">Practice</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero section-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Internship Project · Task 3 API + Quiz</p>
+          <h1>AI Live Interviews that feel like a real placement round.</h1>
+          <p class="hero-description">
+            Intervoxa helps students prepare with a conversational AI interviewer that listens, asks follow-ups, challenges weak answers, remembers context, and creates actionable reports.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-button" href="practice.html">Start AI Live Interview <span aria-hidden="true">→</span></a>
+            <a class="secondary-button" href="dashboard.html#quizModule">Open Quiz</a>
+          </div>
+        </div>
+
+        <aside class="interview-card" aria-label="AI interview preview">
+          <div class="interview-panel">
+            <div class="panel-header">
+              <div>
+                <p>AI Interviewer</p>
+                <h2 id="heroRoleTitle">Java Developer Round</h2>
+              </div>
+              <div class="avatar" aria-hidden="true">🤖</div>
+            </div>
+            <div class="question-box">
+              <p class="box-label">Question</p>
+              <p id="heroQuestionText">Explain the difference between ArrayList and LinkedList with one real use case.</p>
+            </div>
+            <div class="listening-box">
+              <div class="listening-box-header">
+                <p>🎤 Interactive Preview</p>
+                <button class="secondary-button compact-btn" id="heroNextQuestionBtn" type="button">Try Next Question 🔄</button>
+              </div>
+              <span id="heroAnswerHint">Tip: Structure your response with trade-offs, time complexity, and real project scenarios.</span>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="about-section">
+        <div class="section-copy centered">
+          <p class="eyebrow">About the Project</p>
+          <h2>A full-stack AI interview coach built module by module.</h2>
+          <p>
+            Task 3 adds an interactive quiz engine, API-backed interview question service, loading states, and a practice page ready for future Gemini AI interview simulation.
+          </p>
+        </div>
+      </section>
+
+      <section class="features-section">
+        <div class="section-copy">
+          <p class="eyebrow">Core Features</p>
+          <h2>Designed to impress internship recruiters.</h2>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <span aria-hidden="true">🎙️</span>
+            <h3>Voice Interaction</h3>
+            <p>Practice with an AI interviewer that speaks questions aloud and builds real interview confidence.</p>
+          </article>
+          <article class="feature-card">
+            <span aria-hidden="true">⚡</span>
+            <h3>Real-Time Feedback</h3>
+            <p>Review strengths, improvement points, confidence cues, and answer quality after every response.</p>
+          </article>
+          <article class="feature-card">
+            <span aria-hidden="true">🧠</span>
+            <h3>Technical + HR Prep</h3>
+            <p>Prepare for coding, AI/ML, web development, behavioral rounds, aptitude, and communication skills.</p>
+          </article>
+          <article class="feature-card">
+            <span aria-hidden="true">📈</span>
+            <h3>Progress Dashboard</h3>
+            <p>Track interview history, weak topics, scores, and growth trends as the full platform evolves.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="domains-section">
+        <div class="domain-panel">
+          <div>
+            <p class="eyebrow">Interview Categories</p>
+            <h2>Choose an interview track</h2>
+          </div>
+          <div class="category-grid" aria-label="Available interview domains">
+            <span>Java</span>
+            <span>Python</span>
+            <span>AI/ML</span>
+            <span>Web Dev</span>
+            <span>Android</span>
+            <span>HR Interview</span>
+            <span>Aptitude</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© 2026 Intervoxa. Built as an AI Mock Interview internship project.</p>
+      <div>
+        <a href="dashboard.html">Tracker</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </footer>
+
+    <script src="js/navigation.js" defer></script>
+  </body>
+</html>
